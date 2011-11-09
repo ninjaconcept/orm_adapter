@@ -38,9 +38,9 @@ module CouchRest
         # Find the first instance matching conditions
         def find_first(conditions)
           if conditions.keys.first == :id
-            get(conditions.values.first)
+            klass.get(conditions.values.first)
           else
-            send("by_#{conditions.keys.first}", {:key => conditions.values.first, :limit => 1})
+            klass.send("by_#{conditions.keys.first}", {:key => conditions.values.first, :limit => 1}).first
           end
         end
         
